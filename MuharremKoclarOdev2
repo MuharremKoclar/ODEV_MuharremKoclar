@@ -1,0 +1,58 @@
+class Canlilar {
+  String? ad; int? yas; bool? cinsiyet;
+
+  String yuru(Canlilar c) {
+    return "${c.ad} isimli canlı yürüyor.";
+  }
+}
+
+void main(List<String> args) {
+  var x = new Canlilar();
+  var y = new Insan();
+
+  x.ad = "Duman";
+  x.yas = 4;
+  x.cinsiyet = true;
+
+  print(x.yuru(x));
+  print(y.guncelle("Ahmet", "Aslan", true, 1000));
+  print(y.not(90, 95));
+  print(y.kos());
+  print(Insan.ortalama());
+}
+
+class Insan extends Canlilar {
+  String? soyad; bool? gozlukluMu; int? aylikGelir;
+
+  static int vizeler = 1;
+  static int finaller = 1;
+
+  String guncelle(String ad, String soyad, bool gozluk, int gelir) {
+    this.ad = ad;
+    this.soyad = soyad;
+    this.gozlukluMu = gozluk;
+    this.aylikGelir = gelir;
+
+    return "${ad} kişisinin verisi güncellendi.";
+  }
+
+  String kos() {
+    return "${this.ad} ${this.soyad} koşuyor.";
+  }
+
+  static double ortalama() {
+    double sonuc = (Insan.vizeler * 0.3) + (Insan.finaller * 0.7);
+    return sonuc;
+  }
+
+  String not(int vize, int finall) {
+    vizeler = vize;
+    finaller = finall;
+
+    return "Vize ve Final notları güncellendi.\n**Yeni vize: ${vizeler} - Yeni final: ${finaller}**";
+  }
+
+
+
+
+}
